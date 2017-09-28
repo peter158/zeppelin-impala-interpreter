@@ -2,17 +2,17 @@
 Impala interpreter for Apache Zeppelin.
 
 
-#Build
+# Build
 Requirement: Zeppelin must be in your local repo.
 
 ```
 mvn clean package  or  mvn clean package -DskipTests
 ```
 
-#Download
+# Download
 If you cannot build the jar, you can download it in the [release page](https://github.com/peter158/zeppelin-impala-interpreter/releases)
 
-#Deployment
+# Deployment
 
 ```
 1, Update $ZEPPELIN_HOME/conf/zeppeln-site.xml
@@ -26,8 +26,8 @@ If you cannot build the jar, you can download it in the [release page](https://g
 3, Copy interpreter jar in $ZEPPELIN_HOME/interpreter/impala
 
 ```
-#Configuration
-###Properties
+# Configuration
+### Properties
 | Property        | Value    | 
 | --------   | -----:   |
 | default.driver        | org.apache.hive.jdbc.HiveDriver      | 
@@ -35,7 +35,7 @@ If you cannot build the jar, you can download it in the [release page](https://g
 | default.user        | impalaUser      | 
 | default. password        | impalaPassword      | 
 
-###Dependencies
+### Dependencies
 | Artifact        | Exclude    | 
 | --------   | -----:   |
 | org.apache.hive:hive-jdbc:0.14.0	|  | 
@@ -43,8 +43,13 @@ If you cannot build the jar, you can download it in the [release page](https://g
 | jline:jline:2.14       |       | 
 
 
-#How to use
+# How to use
 In Zeppelin, use %impala in a paragraph. After that,you can type the same impala sql code ,For more information, please consult:[https://www.w3cschool.cn/impala/impala_query_language_basics.html](https://www.w3cschool.cn/impala/impala_query_language_basics.html)
-#Examples
+
+
+# Examples
 Configuration
-![]()
+![](https://raw.githubusercontent.com/peter158/zeppelin-impala-interpreter/master/doc/config.png)
+
+impala sql
+![](https://raw.githubusercontent.com/peter158/zeppelin-impala-interpreter/master/doc/sql.png)
