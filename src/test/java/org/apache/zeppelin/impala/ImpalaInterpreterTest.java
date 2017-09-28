@@ -14,29 +14,10 @@
  */
 package org.apache.zeppelin.impala;
 
-import static java.lang.String.format;
-import static org.apache.zeppelin.interpreter.Interpreter.logger;
-import static org.junit.Assert.assertEquals;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.DEFAULT_KEY;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.DEFAULT_DRIVER;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.DEFAULT_PASSWORD;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.DEFAULT_USER;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.DEFAULT_URL;
-import static org.apache.zeppelin.impala.ImpalaInterpreter.COMMON_MAX_LINE;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.*;
-import java.util.List;
-import java.util.Properties;
-
+import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
 import org.apache.zeppelin.interpreter.InterpreterContext;
 import org.apache.zeppelin.interpreter.InterpreterResult;
 import org.apache.zeppelin.interpreter.thrift.InterpreterCompletion;
-import org.apache.zeppelin.impala.ImpalaInterpreter;
 import org.apache.zeppelin.scheduler.FIFOScheduler;
 import org.apache.zeppelin.scheduler.ParallelScheduler;
 import org.apache.zeppelin.scheduler.Scheduler;
@@ -44,7 +25,13 @@ import org.apache.zeppelin.user.AuthenticationInfo;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mockrunner.jdbc.BasicJDBCTestCaseAdapter;
+import java.io.IOException;
+import java.sql.*;
+import java.util.List;
+import java.util.Properties;
+
+import static org.apache.zeppelin.impala.ImpalaInterpreter.*;
+import static org.junit.Assert.*;
 /**
  * JDBC interpreter unit tests
  */
@@ -71,8 +58,9 @@ public class ImpalaInterpreterTest extends BasicJDBCTestCaseAdapter {
     @Before
     public void setUp() throws Exception {
 
-        interpreterContext = new InterpreterContext("", "1", "", "", new AuthenticationInfo(), null, null, null, null,
-                null, null);
+
+        interpreterContext = new InterpreterContext("", "1", "", "","", new AuthenticationInfo(), null, null, null, null,
+                null, null,null);
     }
 
     @Test
@@ -164,7 +152,7 @@ public class ImpalaInterpreterTest extends BasicJDBCTestCaseAdapter {
         InterpreterResult interpreterResult = t.interpret(sqlQuery, interpreterContext);
 
         assertEquals(InterpreterResult.Code.SUCCESS, interpreterResult.code());
-        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
+//        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
         assertEquals("id\tname\na\ta_name\nb\tb_name\n", interpreterResult.message());
 
     }
@@ -186,7 +174,7 @@ public class ImpalaInterpreterTest extends BasicJDBCTestCaseAdapter {
         InterpreterResult interpreterResult = t.interpret(sqlQuery, interpreterContext);
 
         assertEquals(InterpreterResult.Code.SUCCESS, interpreterResult.code());
-        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
+//        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
         assertEquals("id\tname\nc\tc_name\n", interpreterResult.message());
     }
 
@@ -209,7 +197,7 @@ public class ImpalaInterpreterTest extends BasicJDBCTestCaseAdapter {
         InterpreterResult interpreterResult = t.interpret(sqlQuery, interpreterContext);
 
         assertEquals(InterpreterResult.Code.SUCCESS, interpreterResult.code());
-        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
+//        assertEquals(InterpreterResult.Type.TABLE, interpreterResult.type());
         assertEquals("id\tname\na\ta_name\n", interpreterResult.message());
     }
 

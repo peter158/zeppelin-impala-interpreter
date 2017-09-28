@@ -11,13 +11,13 @@
     <groupId>org.apache.zeppelin</groupId>
     <artifactId>zeppelin-impala</artifactId>
     <packaging>jar</packaging>
-    <version>0.6.0</version>
+    <version>0.7.3</version>
     <name>Zeppelin: Impala interpreter</name>
     <url>http://www.apache.org</url>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <zeppelin.version>0.6.0</zeppelin.version>
+        <zeppelin.version>0.7.3</zeppelin.version>
         <junit.version>4.11</junit.version>
         <hive.version>0.14.0</hive.version>
     </properties>
